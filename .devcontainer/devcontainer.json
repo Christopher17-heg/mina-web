@@ -1,0 +1,52 @@
+{
+  "name": "Ubuntu + Bun + Docker",
+  "image": "vikshan/ubuntu-bun:latest",
+
+  // Add Docker-in-Docker feature
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": true,
+      "azureDnsAutoDetection": true,
+      "installDockerBuildx": true,
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "GitHub.copilot",
+        "unifiedjs.vscode-mdx",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens",
+        "oven.bun-vscode",
+        "ms-azuretools.vscode-docker",
+        "WakaTime.vscode-wakatime",
+        "mongodb.mongodb-vscode",
+        "jock.svg",
+        "Lakshmisankar.vscode-lucide-icons"
+      ]
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bun update",
+
+  // Set `remoteUser` to `root` to connect as root.
+  "remoteUser": "root",
+
+  // Mount docker socket and enable privileged mode for Docker-in-Docker
+  "privileged": true,
+  "mounts": ["source=dind-var-lib-docker,target=/var/lib/docker,type=volume"]
+}
