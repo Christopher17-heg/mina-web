@@ -159,9 +159,7 @@ export const HeroAmina = ({ formattedGuildCount, uptime }: HeroAminaProps) => {
               color="gray.400"
             >
               <HStack gap="2">
-                <Icon color="discord.green" boxSize="5">
-                  <LuShield />
-                </Icon>
+                <Icon as={LuShield} color="discord.green" boxSize="5" />
                 <Text>
                   <Text as="strong" color="gray.200">
                     {formattedGuildCount}
